@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Typography from '@material-ui/core/Typography';
-import Card from '@material-ui/core/Card';
-import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import { makeStyles } from '@material-ui/core/styles';
+import arrow from './images/arrow2.svg';
+import Aos from 'aos';
+import 'aos/dist/aos.css';
 
 const useStyles = makeStyles({
   card: {
@@ -20,32 +21,39 @@ const useStyles = makeStyles({
 
 const TopStory = ({ topstory }) => {
   const classes = useStyles();
-
+  useEffect(() => {
+    Aos.init({ duration: 2000 });
+  }, []);
   return (
-    <div className={classes.root}>
+    <div className="main">
       {topstory && (
-        <Card className={classes.card} id={topstory.url}>
-          <CardMedia
-            className={classes.media}
-            component="img"
-            src={
-              topstory.multimedia?.[0]?.url
-                ? `https://nyt.com/${topstory.multimedia[0].url}`
-                : 'https://upload.wikimedia.org/wikipedia/commons/4/40/New_York_Times_logo_variation.jpg'
-            }
-            alt="news-img"
-          />
-          <CardContent>
-            <Typography color="primary" variant="h6"></Typography>
-            <Typography color="textSecondary" variant="subtitle2">
-              {topstory.byline}
-            </Typography>
-            <Typography variant="body2" component="p">
-              <br />
-              {topstory.abstract}
-            </Typography>
-          </CardContent>
-        </Card>
+        <div className="article" id={topstory.url}>
+          <div className="img-article">
+            <CardMedia
+              className={classes.media}
+              component="img"
+              src={
+                topstory.multimedia?.[0]?.url
+                  ? `https://nyt.com/${topstory.multimedia[0].url}`
+                  : 'https://upload.wikimedia.org/wikipedia/commons/4/40/New_York_Times_logo_variation.jpg'
+              }
+              alt="news-img"
+            />
+          </div>
+          <div className="article-header">
+            <a href={topstory.url} className="article-header">
+              {topstory.title}
+            </a>
+          </div>
+          <div className="article-bottom">
+            <div className="article-author">{topstory.byline}</div>
+            <img src={arrow} className="arrow2" />
+          </div>
+          <p>{topstory.abstract}</p>
+          <p className="article-date">
+            {topstory.published_date.slice(2, 10).replaceAll('-', '.')}
+          </p>
+        </div>
       )}
     </div>
   );

@@ -1,67 +1,91 @@
 import React, { useEffect } from 'react';
 import TopStory from './TopStory';
 
-import Grid from "@material-ui/core/Grid";
-import { makeStyles } from "@material-ui/core/styles";
+import Grid from '@material-ui/core/Grid';
+import { makeStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
-import Button from '@material-ui/core/Button';
 import Link from '@material-ui/core/Link';
-import { NavLink } from "react-router-dom";
+import { NavLink } from 'react-router-dom';
+import Aos from 'aos';
+import 'aos/dist/aos.css';
+import BackArrow from './images/backarrow.svg'
 
 const useStyles = makeStyles((theme) => ({
-    card: {
-        maxWidth: 345,
-        boxShadow: "0 5px 8px 0 rgba(0, 0, 0, 0.3)",
-        backgroundColor: "#fafafa",
-    },
-    media: {
-        height: 300,
-    },
-    buttons: {
-        '& > *': {
-            margin: theme.spacing(1),
-        },
-    },
+  card: {
+    maxWidth: 345,
+    boxShadow: '0 5px 8px 0 rgba(0, 0, 0, 0.3)',
+    backgroundColor: '#fafafa',
+  },
+  media: {
+    height: 300,
+  },
 }));
 
 function TopStories({ loading, topStories, getTopArticles }) {
-    const classes = useStyles();
-    useEffect(() => {
-        getTopArticles('world');
-    }, []);
-   
-    return (
-        <>
-         
-                <>
-                    <div className={classes.buttons}>
-                        <Button onClick={() => { getTopArticles('world'); }} variant="outlined" color="primary">World News</Button>
-                        <Button onClick={() => { getTopArticles('technology'); }} variant="outlined" color="secondary">Technology</Button>
-                        <Button onClick={() => { getTopArticles('us'); }} variant="outlined" color="default">US News</Button>
-                    </div>
-                    <NavLink to="/">
-                        <Link component="button" variant="body2">Go Back</Link>
-                    </NavLink>
+  const classes = useStyles();
+  useEffect(() => {
+    getTopArticles('world');
+  }, []);
 
+  useEffect(() => {
+    Aos.init({ duration: 2000 });
+  }, []);
 
-                    <div className={classes.root} >
-                        <Grid container spacing={3}>
-                            {topStories.map((topstory) => (
-                                <Grid item xs={12} sm={4} key={topstory.url}>
-                                    <TopStory topstory={topstory} />
-                                </Grid>
-                            ))}
-                        </Grid>
-                    </div>
-                </>
-            
-        </>
-    );
+  return (
+    <>
+      <>
+        <div className="container-topstories">
+        <NavLink to="/" className='goback'>
+          <Link component="button" variant="body2">
+              <img src={BackArrow} className='backarrow'/>
+            Go Back
+          </Link>
+        </NavLink>
+        <div className='topstory-btn-main'>
+          <button
+            className="draw"
+            onClick={() => {
+              getTopArticles('world');
+            }}
+          >
+            World News
+          </button>
+          <button
+            onClick={() => {
+              getTopArticles('technology');
+            }}
+            className="draw"
+          >
+            Technology
+          </button>
+          <button
+            onClick={() => {
+              getTopArticles('us');
+            }}
+            className="draw"
+          >
+            US News
+          </button>
+        </div>
+        </div>
+
+        <div className={classes.root}>
+          <Grid container spacing={3}>
+            {topStories.map((topstory) => (
+              <Grid item xs={12} sm={4} key={topstory.url} data-aos="fade-up">
+                <TopStory topstory={topstory} />
+              </Grid>
+            ))}
+          </Grid>
+        </div>
+      </>
+    </>
+  );
 }
 
 TopStories.propTypes = {
-    loading: PropTypes.bool.isRequired,
-    topStories: PropTypes.array.isRequired,
+  loading: PropTypes.bool.isRequired,
+  topStories: PropTypes.array.isRequired,
 };
 
 export default TopStories;

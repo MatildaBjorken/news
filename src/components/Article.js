@@ -1,10 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Typography from '@material-ui/core/Typography';
-import Card from '@material-ui/core/Card';
-import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import { makeStyles } from '@material-ui/core/styles';
+import arrow from './images/arrow2.svg';
 
 const useStyles = makeStyles({
   card: {
@@ -17,9 +16,11 @@ const useStyles = makeStyles({
 
 const Article = ({ article }) => {
   const classes = useStyles();
+  
   //let test = article?.media[0]['media-metadata'][0].url
   //console.log(article[Object.keys(article)[0]])
   //console.log(article.byline.original[Object.keys(article.byline.original)[0]])
+
   return (
     <div className="main">
       {article && (
@@ -36,19 +37,19 @@ const Article = ({ article }) => {
               alt="news-img"
             />
           </div>
-          <div>
             <div className="article-header">
               <a href={article.web_url} className="article-header">
                 {article.headline.main}
               </a>
             </div>
-            <h4 className="article-author"> {article.byline.original}</h4>
-
+            <div className="article-bottom">
+              <h4 className="article-author"> {article.byline.original}</h4>
+              <img src={arrow} className="arrow2" />
+            </div>
             <p>{article.snippet.slice(0)}</p>
             <p className="article-date">
               {article.pub_date.slice(2, 10).replaceAll('-', '.')}
             </p>
-          </div>
         </div>
       )}
     </div>

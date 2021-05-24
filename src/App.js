@@ -8,10 +8,15 @@ import TopStories from './components/TopStories';
 import { Link } from 'react-router-dom';
 import LandingPage from './components/landing';
 import landingImg from './components/images/green.jpg';
-import landingImg2 from './components/images/man.jpg';
+import landingImg2 from './components/images/grafitti.jpg';
 import './App.css';
 import arrow from './components/images/arrow.svg';
 import Header from './components/header';
+import Dots from './components/images/dots.png';
+import ReadMe from './components/images/readme.svg';
+import ReadLine from './components/images/read-line.svg';
+import Ticker from 'react-ticker';
+import square from './components/images/square.svg';
 
 const App = () => {
   const [loading, setLoading] = useState(false);
@@ -22,10 +27,8 @@ const App = () => {
     const getArticles = async () => {
       setLoading(true);
       const res = await axios.get(
-        `https://api.nytimes.com/svc/search/v2/articlesearch.json?q=home&api-key=y3XzrNKIXGb7aIpdYtZfsnzqA58tpS5j`
+        `https://api.nytimes.com/svc/search/v2/articlesearch.json?q=art&api-key=y3XzrNKIXGb7aIpdYtZfsnzqA58tpS5j`
       );
-      console.log(res.data.results);
-      console.log(res.data.response);
       setArticles(res.data.response.docs);
       setLoading(false);
     };
@@ -37,7 +40,6 @@ const App = () => {
     const res = await axios.get(
       `https://api.nytimes.com/svc/search/v2/articlesearch.json?q=${text}&api-key=xSsrhssAksLIljo0qATNj33dL2BV6d0h`
     );
-    console.log(res);
     setArticles(res.data.response.docs);
     setLoading(false);
   };
@@ -47,7 +49,6 @@ const App = () => {
     const res = await axios.get(
       `https://api.nytimes.com/svc/topstories/v2/${section}.json?api-key=Ilfm2qj5qZkUFZb3C1wYXJhpxb6ttM1a`
     );
-
     setTopStories(res.data.results);
     setLoading(false);
   };
@@ -100,18 +101,29 @@ const App = () => {
               render={() => (
                 <>
                   <div className="container">
+                    <img className="redLine" src={ReadLine} />
                     <div className="wrapper">
                       <div className="s">
-                        <h3 className="topStories">Trending top stories</h3>
+                        <Ticker className="ticker-main">
+                          {({ index }) => (
+                            <>
+                              <h1 className="ticker">Trending top stories! </h1>
+                            </>
+                          )}
+                        </Ticker>
                         <p className="topStories">
-                          {renderWelcomeMsg()}
+                          {renderWelcomeMsg()}...
                           <br></br>
                           Take a break and read the most popular stories right
                           now. These are the trending stories in the world, in
                           tech and in the us!
                         </p>
                         <NavLink to="/topstories">
-                          <Link component="button" className="btn-topstories ">
+                          <Link
+                            component="button"
+                            className="btn-topstories "
+                            class="submit"
+                          >
                             Go to top stories
                           </Link>
                         </NavLink>
@@ -131,6 +143,7 @@ const App = () => {
                             />
                           )}
                         </>
+                        <img className="readme-img" src={ReadMe} />
                       </div>
                       <div>
                         <>
@@ -149,13 +162,19 @@ const App = () => {
                           )}
                         </>
                         <Search searchArticles={searchArticles} />
-                        <p className='filter-text'>Use filters to narrow the scope of your search. You can specify the fields and the values that your query will be filtered on.</p>
+
+                        <p className="filter-text">
+                          What are you looking for?<br></br>
+                          Use filters to narrow the scope of your search. You
+                          can specify the fields and the values that your query
+                          will be filtered on.
+                        </p>
                       </div>
                     </div>
                   </div>
                   <div className="header">
-                    <div>
-                      Home
+                    <div className="read">
+                      Read
                       <img src={arrow} className="arrow" />
                     </div>
 
@@ -189,6 +208,14 @@ const App = () => {
             />
           </Switch>
         </Router>
+        <div className="header">
+          <div className="read">
+            Read
+            <img src={arrow} className="arrow" />
+          </div>
+
+          <h2 className="time">  AM</h2>
+        </div>
       </div>
     </div>
   );
