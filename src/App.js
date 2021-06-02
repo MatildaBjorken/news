@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { NavLink } from 'react-router-dom';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 import axios from 'axios';
 import Articles from './components/Articles';
 import Search from './components/Search';
@@ -17,7 +18,8 @@ import ReadMe from './components/images/readme.svg';
 import ReadLine from './components/images/read-line.svg';
 import Ticker from 'react-ticker';
 import square from './components/images/square.svg';
-
+import { TimelineLite, TweenMax, Power3 } from 'gsap';
+import About from './components/about';
 const App = () => {
   const [loading, setLoading] = useState(false);
   const [articles, setArticles] = useState([]);
@@ -90,134 +92,143 @@ const App = () => {
   renderWelcomeMsg();
 
   return (
-    <div>
+    <BrowserRouter>
       <div>
-        <Header></Header>
-        <Router>
+        <div>
+          <Header />
+
           <Switch>
-            <Route
-              exact
-              path="/"
-              render={() => (
-                <>
-                  <div className="container">
-                    <img className="redLine" src={ReadLine} />
-                    <div className="wrapper">
-                      <div className="s">
-                        <Ticker className="ticker-main">
-                          {({ index }) => (
-                            <>
-                              <h1 className="ticker">Trending top stories! </h1>
-                            </>
-                          )}
-                        </Ticker>
-                        <p className="topStories">
-                          {renderWelcomeMsg()}...
-                          <br></br>
-                          Take a break and read the most popular stories right
-                          now. These are the trending stories in the world, in
-                          tech and in the us!
-                        </p>
-                        <NavLink to="/topstories">
-                          <Link
-                            component="button"
-                            className="btn-topstories "
-                            class="submit"
-                          >
-                            Go to top stories
-                          </Link>
-                        </NavLink>
-                        <br></br>
-                        <>
-                          {loading ? (
-                            'Loading...'
-                          ) : (
-                            <img
-                              className="img-left"
-                              src={
-                                articles?.multimedia?.[0]?.url
-                                  ? `https://nytimes.com/${articles.multimedia[0].url}`
-                                  : landingImg2
-                              }
-                              alt="news-img"
-                            />
-                          )}
-                        </>
-                        <img className="readme-img" src={ReadMe} />
-                      </div>
-                      <div>
-                        <>
-                          {loading ? (
-                            'Loading...'
-                          ) : (
-                            <img
-                              className="img-right"
-                              src={
-                                articles?.multimedia?.[0]?.url
-                                  ? `https://nytimes.com/${articles.multimedia[0].url}`
-                                  : landingImg
-                              }
-                              alt="news-img"
-                            />
-                          )}
-                        </>
-                        <Search searchArticles={searchArticles} />
-
-                        <p className="filter-text">
-                          What are you looking for?<br></br>
-                          Use filters to narrow the scope of your search. You
-                          can specify the fields and the values that your query
-                          will be filtered on.
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="header">
-                    <div className="read">
-                      Read
-                      <img src={arrow} className="arrow" />
-                    </div>
-
-                    <h2 className="time">
-                      {' '}
-                      {timer.toLocaleTimeString().slice(0, 2)} AM
-                    </h2>
-                  </div>
-
-                  <Articles
-                    className="test"
-                    loading={loading}
-                    articles={articles}
-                  />
-                </>
-              )}
-            />
-
-            <Route
-              exact
-              path="/topstories"
-              render={() => (
-                <>
-                  <TopStories
-                    loading={loading}
-                    topStories={topStories}
-                    getTopArticles={getTopArticles}
-                  />
-                </>
-              )}
-            />
+            <Route path="/about" exact />
           </Switch>
-        </Router>
-        <div className="header">
-          <div className="read">
-            Read
-            <img src={arrow} className="arrow" />
-          </div>
 
-          <h2 className="time">  AM</h2>
+          <Router>
+            <Switch>
+              <Route
+                exact
+                path="/"
+                render={() => (
+                  <>
+                    <div className="container">
+                      <img className="redLine" src={ReadLine} />
+                      <div className="wrapper">
+                        <div className="s">
+                          <Ticker className="ticker-main">
+                            {({ index }) => (
+                              <>
+                                <h1 className="ticker">
+                                  Trending top stories!{' '}
+                                </h1>
+                              </>
+                            )}
+                          </Ticker>
+                          <p className="topStories">
+                            {renderWelcomeMsg()}...
+                            <br></br>
+                            Take a break and read the most popular stories right
+                            now. These are the trending stories in the world, in
+                            tech and in the us!
+                          </p>
+                          <NavLink to="/topstories">
+                            <Link
+                              component="button"
+                              className="btn-topstories "
+                              class="submit"
+                            >
+                              Go to top stories
+                            </Link>
+                          </NavLink>
+                          <br></br>
+                          <>
+                            {loading ? (
+                              'Loading...'
+                            ) : (
+                              <img
+                                className="img-left"
+                                src={
+                                  articles?.multimedia?.[0]?.url
+                                    ? `https://nytimes.com/${articles.multimedia[0].url}`
+                                    : landingImg2
+                                }
+                                alt="news-img"
+                              />
+                            )}
+                          </>
+                          <img className="readme-img" src={ReadMe} />
+                        </div>
+                        <div>
+                          <>
+                            {loading ? (
+                              'Loading...'
+                            ) : (
+                              <img
+                                className="img-right"
+                                src={
+                                  articles?.multimedia?.[0]?.url
+                                    ? `https://nytimes.com/${articles.multimedia[0].url}`
+                                    : landingImg
+                                }
+                                alt="news-img"
+                              />
+                            )}
+                          </>
+                          <Search searchArticles={searchArticles} />
+
+                          <p className="filter-text">
+                            What are you looking for?<br></br>
+                            Use filters to narrow the scope of your search. You
+                            can specify the fields and the values that your
+                            query will be filtered on.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="header">
+                      <div className="read">
+                        Read
+                        <img src={arrow} className="arrow" />
+                      </div>
+
+                      <h2 className="time">
+                        {' '}
+                        {timer.toLocaleTimeString().slice(0, 2)} AM
+                      </h2>
+                    </div>
+
+                    <Articles
+                      className="test"
+                      loading={loading}
+                      articles={articles}
+                    />
+                  </>
+                )}
+              />
+
+              <Route
+                exact
+                path="/topstories"
+                render={() => (
+                  <>
+                    <TopStories
+                      loading={loading}
+                      topStories={topStories}
+                      getTopArticles={getTopArticles}
+                    />
+                  </>
+                )}
+              />
+            </Switch>
+          </Router>
+          <div className="header">
+            <div className="read">
+              Read
+              <img src={arrow} className="arrow" />
+            </div>
+
+            <h2 className="time"> AM</h2>
+          </div>
         </div>
       </div>
-    </div>
+    </BrowserRouter>
   );
 };
 

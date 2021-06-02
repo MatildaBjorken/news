@@ -10,8 +10,6 @@ import 'aos/dist/aos.css';
 const useStyles = makeStyles({
   card: {
     maxWidth: 345,
-    boxShadow: '0 5px 8px 0 rgba(0, 0, 0, 0.3)',
-    backgroundColor: '#fafafa',
     height: 500,
   },
   media: {

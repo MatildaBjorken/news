@@ -4,6 +4,7 @@ import Typography from '@material-ui/core/Typography';
 import CardMedia from '@material-ui/core/CardMedia';
 import { makeStyles } from '@material-ui/core/styles';
 import arrow from './images/arrow2.svg';
+import Typewriter from 'typewriter-effect';
 
 const useStyles = makeStyles({
   card: {
@@ -16,11 +17,11 @@ const useStyles = makeStyles({
 
 const Article = ({ article }) => {
   const classes = useStyles();
-  
+
   //let test = article?.media[0]['media-metadata'][0].url
   //console.log(article[Object.keys(article)[0]])
   //console.log(article.byline.original[Object.keys(article.byline.original)[0]])
-
+  let author = article.byline.original;
   return (
     <div className="main">
       {article && (
@@ -37,19 +38,28 @@ const Article = ({ article }) => {
               alt="news-img"
             />
           </div>
-            <div className="article-header">
-              <a href={article.web_url} className="article-header">
-                {article.headline.main}
-              </a>
-            </div>
-            <div className="article-bottom">
-              <h4 className="article-author"> {article.byline.original}</h4>
-              <img src={arrow} className="arrow2" />
-            </div>
-            <p>{article.snippet.slice(0)}</p>
-            <p className="article-date">
-              {article.pub_date.slice(2, 10).replaceAll('-', '.')}
-            </p>
+
+          <div className="article-header">
+            <a href={article.web_url} className="article-header">
+              {article.headline.main}
+            </a>
+          </div>
+          <div className="article-bottom">
+        
+            <Typewriter
+            className="article-author"
+              options={{
+                strings: [author],
+                autoStart: true,
+                loop: true,
+              }}
+            />
+            <img src={arrow} className="arrow2" />
+          </div>
+          <p>{article.snippet.slice(0)}</p>
+          <p className="article-date">
+            {article.pub_date.slice(2, 10).replaceAll('-', '.')}
+          </p>
         </div>
       )}
     </div>

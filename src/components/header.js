@@ -1,5 +1,8 @@
 import React from 'react';
 import NewsImg from './images/news.svg';
+import { NavLink } from 'react-router-dom';
+import { BrowserRouter, Route, Link } from 'react-router-dom';
+import About from './about';
 
 const Header = () => {
   const hamburger = document.querySelector('.hamburger');
@@ -25,12 +28,13 @@ const Header = () => {
         <div class="line2"></div>
         <div class="line3"></div>
       </div>
+
       <ul class="nav-links">
         <li>
           <a href="#">Top Stories</a>
         </li>
         <li>
-          <a href="#">About</a>
+          <Link to="/about"> Aboutpage</Link>
         </li>
       </ul>
     </nav>
@@ -38,3 +42,5 @@ const Header = () => {
 };
 
 export default Header;
+
+

@@ -38,7 +38,6 @@ function TopStories({ loading, topStories, getTopArticles }) {
         <NavLink to="/" className='goback'>
           <Link component="button" variant="body2">
               <img src={BackArrow} className='backarrow'/>
-            Go Back
           </Link>
         </NavLink>
         <div className='topstory-btn-main'>
