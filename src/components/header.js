@@ -1,6 +1,6 @@
 import React from 'react';
 import NewsImg from './images/news.svg';
-import { NavLink } from 'react-router-dom';
+
 import { BrowserRouter, Route, Link } from 'react-router-dom';
 import About from './about';
 

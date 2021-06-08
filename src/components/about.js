@@ -1,188 +1,69 @@
-import React, {useEffect, useRef} from "react";
-import {TimelineLite ,TweenMax, Power3} from 'gsap';
 import Header from './header';
-import imgGirl from "./images/green.jpg";
-import imgBoy from "./images/man.jpg";
-import arrow from './images/arrow2.svg';
+import imgBoy from './images/street.jpg';
+import * as React from 'react';
+import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
+import ProgressiveImage from 'react-progressive-image';
 import '../about.css';
 
-function About() {
-  
-  return (
-    <div>
-      <Header/>
-      <div class="square">
-              <div class="line-top"></div>
-              <div class="line-right"></div>
-              <div class="line-bottom"></div>
-              <div class="line-left"></div>
-              <div class="black-mask"></div>
-              <div class="text">
-                <h1>We're doing amazing things</h1>
+/*
+<div class="square">
+<div class="line-top"></div>
+<div class="line-right"></div>
+<div class="line-bottom"></div>
+<div class="line-left"></div>
+<div class="black-mask"></div>
+<div class="text">
+  <h1>We're doing amazing things</h1>
+</div>
+</div>
+*/
+const transition = { duration: 0.6, ease: [0.43, 0.13, 0.23, 0.96] };
+const About = ({ imageDetails, image }) => (
+  <>
+    <main>
+      <div className='about-container'>
+        <div className='row center'>
+          <div className='image-container'>
+            <div
+              className='thumbnail'
+              ref={image}
+              style={{
+                width: imageDetails.width,
+                height: imageDetails.height,
+              }}>
+              <div className='frame'>
+                <Link to={`/model`}>
+                  <ProgressiveImage
+                    src={imgBoy}
+                    placeholder={imgBoy}>
+                    {(src) => (
+                      <motion.img
+                        src={src}
+                        alt='Yasmeen Tariq'
+                        whileHover={{ scale: 1.1 }}
+                        transition={transition}
+                      />
+                    )}
+                  </ProgressiveImage>
+                </Link>
               </div>
             </div>
-      <div class="blog">
- <div class="blog-part is-menu">
-  <a href="#" class="blog-menu">
-   Work
-   <svg fill="none" stroke="currentColor" stroke-width=".7" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-up-right" viewBox="0 0 24 24">
-    <path d="M7 17L17 7M7 7h10v10" />
-   </svg>
-  </a>
-  <a href="#" class="blog-menu">Studio</a>
-  <a href="#" class="blog-menu">Blog</a>
-  <a href="#" class="blog-menu">Contact</a>
-  <a href="#" class="blog-menu mention">@MagazineDope</a>
-  <a href="#" class="blog-menu subscribe">Subscribe</a>
- </div>
- <div class="blog-header blog-is-sticky">
-  <div class="blog-article header-article">
-   <div class="blog-big__title">Self</div>
-   <div class="blog-menu rounded small-title">Pinned Issue</div>
-  </div>
-  <div class="blog-article page-number">
-   NO. 01
-  </div>
- </div>
- <div class="blog-header-container">
-  <div class="blog-header">
-   <div class="blog-article header-article">
-    <div class="blog-big__title">Esteem</div>
-    <div class="blog-menu small-title date">12.06.2021</div>
-   </div>
-   <div class="blog-article">
-    <img src={imgBoy} alt=""/>
-    <h2>Sharing The <span>Widespread</span> Acclaim About Motivation</h2>
-    <div class="blog-detail">
-     <span>By Richard Carnation</span>
-     <span>5 Min Read</span>
-    </div>
-    <p>Blonde received widespread acclaim, with critics praising Ocean's introspective lyrics and the album's unconventional</p>
-    <a href="#">
-     <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-corner-down-right" viewBox="0 0 24 24">
-      <path d="M15 10l5 5-5 5" />
-      <path d="M4 4v7a4 4 0 004 4h12" />
-     </svg>
-     See More
-    </a>
-   </div>
-  </div>
-  <div class="blog-header">
-   <div class="blog-article header-article">
-    <div class="blog-big__title">Love</div>
-    <div class="blog-menu small-title date">12.06.2021</div>
-   </div>
-   <div class="blog-article">
-    <img src={imgBoy} alt=""/>
-    <h2>Talking About <span>Vulnerability</span> During Quarantine</h2>
-    <div class="blog-detail">
-     <span>By Tom Hiddleston</span>
-     <span>5 Min Read</span>
-    </div>
-    <p>Having traveled to Turkey multiple times, with critics praising Ocean's introspective lyrics and the album's unconventional</p>
-    <a href="#">
-     <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-corner-down-right" viewBox="0 0 24 24">
-      <path d="M15 10l5 5-5 5" />
-      <path d="M4 4v7a4 4 0 004 4h12" />
-     </svg>
-     See More
-    </a>
-   </div>
-  </div>
-  <div class="blog-header">
-   <div class="blog-article header-article">
-    <div class="blog-big__title">Control</div>
-    <div class="blog-menu small-title date">12.06.2021</div>
-   </div>
-   <div class="blog-article">
-    <img src={imgBoy} alt=""></img>
-    <h2>How 2020 Changed <span>Understanding</span> Of Mental Health</h2>
-    <div class="blog-detail">
-     <span>By Scarlett Witch</span>
-     <span>5 Min Read</span>
-    </div>
-    <p>Time is defines ad the indefinete continued progress, with critics praising Ocean's introspective lyrics and the album's</p>
-    <a href="#">
-     <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-corner-down-right" viewBox="0 0 24 24">
-      <path d="M15 10l5 5-5 5" />
-      <path d="M4 4v7a4 4 0 004 4h12" />
-     </svg>
-     See More
-    </a>
-   </div>
-  </div>
- </div>
- <div class="blog-part right-blog">
-  <marquee width="100%" direction="left">
-   <span>Now And Then You Miss It Sounds Make You Cry</span>
-   <span>Now In - MoMa Sharing Exhibition NOW</span>
-   <span>NYC Opens After Long Lockdown Check</span>
-  </marquee>
-  <div class="blog-right-title-container">
-   <div class="blog-right-title">
-    Featured Articles
-   </div>
-   <div class="blog-menu rounded">See All</div>
-  </div>
-  <div class="blog-right">
-   <div class="blog-right-container">
-    <div class="blog-title-date">
-     <div class="blog-right-page">1</div>
-     <div class="date">12.06.2021</div>
-    </div>
-    <div class="blog-right-page-title">Blonde - Widespread Acclaim</div>
-    <div class="blog-right-page-subtitle">Blonde received widespread acclaim, with critics praising Ocean's introspective lyrics and the album's</div>
-   </div>
-   <div class="blog-right-container">
-    <div class="blog-title-date">
-     <div class="blog-right-page">2</div>
-     <div class="date">12.06.2021</div>
-    </div>
-    <div class="blog-right-page-title">Introspective Lyrics and Beats</div>
-    <div class="blog-right-page-subtitle">When we toured Scotland we stopped at several selft-sealing hpuses because hotels would</div>
-   </div>
-   <div class="blog-right-container">
-    <div class="blog-title-date">
-     <div class="blog-right-page">3</div>
-     <div class="date">12.06.2021</div>
-    </div>
-    <div class="blog-right-page-title">The Language Of Gris: Comples Beauty Of Monochrome</div>
-    <div class="blog-right-page-subtitle">The interior concept was conceived of by Dutch archtitect Studio Anne Holtrop who cleverly emulated</div>
-   </div>
-   <div class="blog-right-container">
-    <div class="blog-title-date">
-     <div class="blog-right-page">4</div>
-     <div class="date">12.06.2021</div>
-    </div>
-    <div class="blog-right-page-title">A24 IS LAUNCHING ITS OWN BEAUTY BRAND</div>
-    <div class="blog-right-page-subtitle">Blonde received widespread acclaim, with critics praising Ocean's introspective lyrics and the album's</div>
-   </div>
-   <div class="blog-right-container">
-    <div class="blog-title-date">
-     <div class="blog-right-page">5</div>
-     <div class="date">12.06.2021</div>
-    </div>
-    <div class="blog-right-page-title">Elon Musk's SpaceX is launching a moon satellite</div>
-    <div class="blog-right-page-subtitle">The interior concept was conceived of by Dutch archtitect Studio Anne Holtrop who cleverly emulated</div>
-   </div>
-   <div class="blog-right-container">
-    <div class="blog-title-date">
-     <div class="blog-right-page">6</div>
-     <div class="date">12.06.2021</div>
-    </div>
-    <div class="blog-right-page-title">What Happens When You Leave Your Old life Behind</div>
-    <div class="blog-right-page-subtitle">The interior concept was conceived of by Dutch archtitect Studio Anne Holtrop who cleverly emulated</div>
-   </div>
-   <div class="circle">
-    <div class="circle-title">Leave Your Old Life Behind</div>
-    <div class="circle-subtitle">Don't try to be like someone else, be yourself. Be secure with yourself.</div>
-    <div class="circle-footer">Explore</div>
-   </div>
-  </div>
- </div>
-</div>
-    </div>
-  );
-}
+            <motion.div
+              exit={{ opacity: 0 }}
+              transition={transition}
+              className='information'>
+              <div className='title'>Yasmeen Tariq</div>
+              <div className='location'>
+                <span>28.538336</span>
+                <span>-81.379234</span>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </>
+);
 
 export default About;
