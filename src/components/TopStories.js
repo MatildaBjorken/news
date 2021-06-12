@@ -68,14 +68,14 @@ function TopStories({ loading, topStories, getTopArticles }) {
         </div>
         </div>
 
-        <div className={classes.root}>
-          <Grid container spacing={3}>
+        <div className="d">
+         
             {topStories.map((topstory) => (
-              <Grid item xs={12} sm={4} key={topstory.url} data-aos="fade-up">
+              <div className="main" key={topstory.url} data-aos="fade-up">
                 <TopStory topstory={topstory} />
-              </Grid>
+              </div>
             ))}
-          </Grid>
+          
         </div>
       </>
     </>

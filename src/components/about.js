@@ -53,7 +53,7 @@ const About = ({ imageDetails, image }) => (
               exit={{ opacity: 0 }}
               transition={transition}
               className='information'>
-              <div className='title'>Yasmeen Tariq</div>
+              <div className='title'>Why News?</div>
               <div className='location'>
                 <span>28.538336</span>
                 <span>-81.379234</span>

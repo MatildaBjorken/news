@@ -84,20 +84,16 @@ const Model = ({ imageDetails }) => {
             </motion.div>
             <motion.div className='model'>
               <motion.span className='first' variants={firstName}>
-                <motion.span variants={letter}>Y</motion.span>
-                <motion.span variants={letter}>a</motion.span>
-                <motion.span variants={letter}>s</motion.span>
-                <motion.span variants={letter}>m</motion.span>
-                <motion.span variants={letter}>e</motion.span>
-                <motion.span variants={letter}>e</motion.span>
-                <motion.span variants={letter}>n</motion.span>
+                <motion.span variants={letter}>W</motion.span>
+                <motion.span variants={letter}>h</motion.span>
+                <motion.span variants={letter}>y</motion.span>
               </motion.span>
               <motion.span className='last' variants={lastName}>
-                <motion.span variants={letter}>T</motion.span>
-                <motion.span variants={letter}>a</motion.span>
-                <motion.span variants={letter}>r</motion.span>
-                <motion.span variants={letter}>i</motion.span>
-                <motion.span variants={letter}>q</motion.span>
+                <motion.span variants={letter}>N</motion.span>
+                <motion.span variants={letter}>e</motion.span>
+                <motion.span variants={letter}>w</motion.span>
+                <motion.span variants={letter}>s</motion.span>
+                <motion.span variants={letter}>?</motion.span>
               </motion.span>
             </motion.div>
           </div>

@@ -6,6 +6,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import arrow from './images/arrow2.svg';
 import Aos from 'aos';
 import 'aos/dist/aos.css';
+import Typewriter from 'typewriter-effect';
 
 const useStyles = makeStyles({
   card: {
@@ -18,6 +19,8 @@ const useStyles = makeStyles({
 });
 
 const TopStory = ({ topstory }) => {
+  let author = topstory.byline;
+
   const classes = useStyles();
   useEffect(() => {
     Aos.init({ duration: 2000 });
@@ -44,7 +47,14 @@ const TopStory = ({ topstory }) => {
             </a>
           </div>
           <div className="article-bottom">
-            <div className="article-author">{topstory.byline}</div>
+            <Typewriter
+              className="article-author"
+              options={{
+                strings: [author],
+                autoStart: true,
+                loop: true,
+              }}
+            />
             <img src={arrow} className="arrow2" />
           </div>
           <p>{topstory.abstract}</p>

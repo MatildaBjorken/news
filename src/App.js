@@ -235,7 +235,7 @@ const App = () => {
             />
           </Switch>
         </Router>
-        <div className="header">
+        <div className="footer">
           <div className="read">
             <img src={GreatDay} className="greatday" />
           </div>

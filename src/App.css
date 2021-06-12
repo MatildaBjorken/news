@@ -127,7 +127,6 @@ body {
 
 .d {
   border-top: 1px solid black;
-  border-bottom: 1px solid black;
   padding-top: 50px;
   padding-bottom: 50px;
   display: grid;
@@ -216,8 +215,8 @@ a {
 }
 
 .greatday {
-  margin-bottom: .5em;
-  margin-top: .5em;
+  margin-bottom: 0.5em;
+  margin-top: 0.5em;
 }
 
 .goback {
@@ -249,7 +248,6 @@ a {
   align-items: center;
 }
 
-
 .header {
   width: 100%;
   display: flex;
@@ -258,6 +256,17 @@ a {
   text-transform: uppercase;
   font-size: 40px;
   z-index: 2;
+}
+.footer {
+  border-top: 1px solid black;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  top: 0%;
+  text-transform: uppercase;
+  font-size: 40px;
+  z-index: 2;
+  align-items: center;
 }
 
 .filter-text {
@@ -281,8 +290,7 @@ a {
   display: none;
 }
 
-.square-footer{
-  
+.square-footer {
 }
 
 .bar {
@@ -442,6 +450,7 @@ nav {
   }
 
   .nav-links.open {
+    color: white;
     clip-path: circle(1000px at 90% -10%);
     -webkit-clip-path: circle(1000px at 90% -10%);
     pointer-events: all;
@@ -672,7 +681,6 @@ nav {
     width: 4rem;
   }
 }
-
 
 @media only screen and (max-width: 600px) {
   .d {

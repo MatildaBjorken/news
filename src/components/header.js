@@ -21,7 +21,8 @@ const Header = () => {
   return (
     <nav className="nav">
       <div class="logo">
-        <img src={NewsImg} alt="Logo Image" />
+       
+        <Link to='/'> <img src={NewsImg} alt="Logo Image" /></Link>
       </div>
       <div class="hamburger" onClick={menu}>
         <div class="line1"></div>
@@ -31,7 +32,7 @@ const Header = () => {
 
       <ul class="nav-links">
         <li>
-          <a href="#">Top Stories</a>
+          <Link to='/topstories'>Top Stories</Link>
         </li>
         <li>
           <Link to="/about"> Aboutpage</Link>

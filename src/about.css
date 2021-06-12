@@ -226,7 +226,6 @@ main .about-container .row .image-container .thumbnail .frame img {
 }
 
 main .about-container .row .image-container .information {
-  position: absolute;
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -237,7 +236,8 @@ main .about-container .row .image-container .information {
   -webkit-box-pack: justify;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  margin-top: 20px;
+  margin-top: 1em;
+  margin-bottom: 1em;
   text-transform: uppercase;
 }
 
@@ -246,7 +246,7 @@ main .about-container .row .image-container .information .location span:nth-chil
 }
 
 .single .about-container .top-row {
-  height: 85vh;
+  height: 55vh;
   width: 100%;
   -webkit-box-align: end;
   -ms-flex-align: end;
@@ -289,13 +289,12 @@ main .about-container .row .image-container .information .location span:nth-chil
   display: inline-block;
   position: relative;
   font-weight: 400;
-  font-size: 224px;
-  font-family: "Maragsa";
+  font-size: 140px;
 }
 
 @media (max-width: 1440px) {
   .single .about-container .top-row .top .model span {
-    font-size: 128px;
+    font-size: 90px;
   }
 }
 
