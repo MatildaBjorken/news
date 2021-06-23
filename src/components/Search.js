@@ -25,7 +25,6 @@ const Search = ({ searchArticles }) => {
           value={text}
           onChange={handleChange}
         />
-      
         </div>
       </form>
     </div>

@@ -93,8 +93,8 @@ const App = () => {
   renderWelcomeMsg();
 
   const imageDetails = {
-    width: 524,
-    height: 650,
+    width: 424,
+    height: 550,
   };
   return (
     <div>
@@ -126,10 +126,12 @@ const App = () => {
               path="/"
               render={() => (
                 <>
+                <div className='coinatiner-main'>
                   <div className="container">
                     <img className="redLine" src={ReadLine} />
                     <div className="wrapper">
                       <div className="s">
+                        <div></div>
                         <Ticker className="ticker-main">
                           {({ index }) => (
                             <>
@@ -171,7 +173,7 @@ const App = () => {
                         </>
                         <img className="readme-img" src={ReadMe} />
                       </div>
-                      <div>
+                      <div className='right'>
                         <>
                           {loading ? (
                             'Loading...'
@@ -209,7 +211,7 @@ const App = () => {
                       {timer.toLocaleTimeString().slice(0, 2)} AM
                     </h2>
                   </div>
-
+                  </div>
                   <Articles
                     className="test"
                     loading={loading}

@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
-import { motion, useViewportScroll, useTransform } from "framer-motion";
+import React, { useEffect, useState } from 'react';
+import { motion, useViewportScroll, useTransform } from 'framer-motion';
 import imgBoy from './images/street.jpg';
 //Components
-import ScrollForMore from "./scrollformore";
+import ScrollForMore from './scrollformore';
 //Ease
 const transition = { duration: 1.4, ease: [0.6, 0.01, -0.05, 0.9] };
 
@@ -52,22 +52,23 @@ const Model = ({ imageDetails }) => {
 
   useEffect(() => {
     if (canScroll === false) {
-      document.querySelector("body").classList.add("no-scroll");
+      document.querySelector('body').classList.add('no-scroll');
     } else {
-      document.querySelector("body").classList.remove("no-scroll");
+      document.querySelector('body').classList.remove('no-scroll');
     }
   }, [canScroll]);
 
   return (
     <motion.div
       onAnimationComplete={() => setCanScroll(true)}
-      className='single'
-      initial='initial'
-      animate='animate'
-      exit='exit'>
-      <div className='about-container fluid'>
-        <div className='row center top-row'>
-          <div className='top'>
+      className="single"
+      initial="initial"
+      animate="animate"
+      exit="exit"
+    >
+      <div className="about-container fluid">
+        <div className="row center top-row">
+          <div className="top">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{
@@ -75,20 +76,22 @@ const Model = ({ imageDetails }) => {
                 y: 0,
                 transition: { delay: 1.2, ...transition },
               }}
-              className='details'>
-              <div className='location'>
+              className="details"
+            >
+              
+              <div className="location">
                 <span>28.538336</span>
                 <span>-81.379234</span>
               </div>
-              <div className='mua'>MUA: @mylifeascrystall</div>
+              <div className="mua">New York Times</div>
             </motion.div>
-            <motion.div className='model'>
-              <motion.span className='first' variants={firstName}>
+            <motion.div className="model">
+              <motion.span className="first" variants={firstName}>
                 <motion.span variants={letter}>W</motion.span>
                 <motion.span variants={letter}>h</motion.span>
                 <motion.span variants={letter}>y</motion.span>
               </motion.span>
-              <motion.span className='last' variants={lastName}>
+              <motion.span className="last" variants={lastName}>
                 <motion.span variants={letter}>N</motion.span>
                 <motion.span variants={letter}>e</motion.span>
                 <motion.span variants={letter}>w</motion.span>
@@ -98,29 +101,31 @@ const Model = ({ imageDetails }) => {
             </motion.div>
           </div>
         </div>
-        <div className='row bottom-row'>
-          <div className='bottom'>
-            <motion.div className='image-container-single'>
+        <div className="row bottom-row">
+          <div className="bottom">
+            <motion.div className="image-container-single">
               <motion.div
                 initial={{
-                  y: "-50%",
+                  y: '-50%',
                   width: imageDetails.width,
                   height: imageDetails.height,
                 }}
                 animate={{
                   y: 0,
-                  width: "100%",
+                  width: '100%',
                   height: window.innerWidth > 1440 ? 800 : 400,
                   transition: { delay: 0.2, ...transition },
                 }}
-                className='thumbnail-single'>
+                className="thumbnail-single"
+              >
                 <motion.div
-                  className='frame-single'
-                  whileHover='hover'
-                  transition={transition}>
+                  className="frame-single"
+                  whileHover="hover"
+                  transition={transition}
+                >
                   <motion.img
                     src={imgBoy}
-                    alt='an image'
+                    alt="an image"
                     style={{ scale: scale }}
                     initial={{ scale: 1.0 }}
                     animate={{
@@ -135,28 +140,24 @@ const Model = ({ imageDetails }) => {
           <ScrollForMore />
         </div>
       </div>
-      <div className='detailed-information'>
-        <div className='about-container'>
-          <div className='row'>
-            <h2 className='title'>
+      <div className="detailed-information">
+        <div className="about-container">
+          <div className="row">
+            <h2 className="title">
               The insiration behind the artwork & <br /> what it means.
             </h2>
             <p>
-              Contrary to popular belief, Lorem Ipsum is not simply random text.
-              It has roots in a piece of classical Latin literature from 45 BC,
-              making it over 2000 years old. Richard McClintock, a Latin
-              professor at Hampden-Sydney College in Virginia, looked up one of
-              the more obscure Latin words, consectetur, from a Lorem Ipsum
-              passage, and going through the cites of the word in classical
-              literature, discovered the undoubtable source. Lorem Ipsum comes
-              from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et
-              Malorum" (The Extremes of Good and Evil) by Cicero, written in 45
-              BC. This book is a treatise on the theory of ethics, very popular
-              during the Renaissance. The first line of Lorem Ipsum, "Lorem
-              ipsum dolor sit amet..", comes from a line in section 1.10.32.
+              The media is known as a gatekeeper. When issues not visible to the
+              public are deemed important enough, it is the media that decides
+              to give those issues the platform to be accessible to
+              everyone.Without the news everyone would be out of the loop and
+              that gives people in power the ability to get away with things
+              that are unjust.
             </p>
+            
           </div>
         </div>
+
       </div>
     </motion.div>
   );
