@@ -396,9 +396,13 @@
   }
 }
 
-@media (min-width: 1408px) {
+@media (max-width: 1408px) {
   .about-container {
     max-width: 1560px;
+  }
+  .single .about-container .bottom-row .bottom .thumbnail-single .frame-single img {
+
+    width: 80%;
   }
 }
 
@@ -482,10 +486,11 @@ main .about-container .row .image-container .thumbnail {
   overflow: hidden;
   position: relative;
   text-align: center;
+  margin-top: 6em;
 }
 
-main .about-container .row .image-container .thumbnail .frame img {
-  margin-top: 6em;
+main .about-container .row .image-container .thumbnail .frame img{
+  width: 424px;
 }
 
 main .about-container .row .image-container .information {
@@ -582,7 +587,7 @@ main .about-container .row .image-container .information .location span:nth-chil
 }
 
 .single .about-container .bottom-row .bottom .thumbnail-single .frame-single img {
-  position: absolute;
+
   width: 100%;
 }
 
@@ -590,7 +595,7 @@ main .about-container .row .image-container .information .location span:nth-chil
   position: absolute;
   bottom: 200px;
   left: 200px;
-  z-index: 20;
+  z-index: 1;
 }
 
 .single .about-container .bottom-row .scroll-for-more .icon svg {
@@ -605,7 +610,7 @@ main .about-container .row .image-container .information .location span:nth-chil
 }
 
 .detailed-information {
-  margin-top: 250px;
+  margin-top: 230px;
   margin-bottom: 100px;
 }
 
@@ -682,7 +687,7 @@ main .about-container .row .image-container .information .location span:nth-chil
   }
 
   .detailed-information {
-    margin-top: 150px;
+    margin-top: 140px;
     margin-bottom: 50px;
   }
 
@@ -698,13 +703,22 @@ main .about-container .row .image-container .information .location span:nth-chil
     width: 220%;
   }
 
+  .single .about-container .bottom-row .scroll-for-more {
+    bottom: 130px;
+    left: 200px;
+}
+
+  .single .about-container .top-row .top {
+    padding-top: 100px;
+    padding-bottom: 40px;
+}
+
   .single .about-container .top-row .top .model span {
     font-size: 40px;
   }
 
   main .about-container .row .image-container .thumbnail .frame img {
-    width: 60%;
-    margin-top: 8em;
+    margin-top: 3em;
   }
 
   .about-container .row {

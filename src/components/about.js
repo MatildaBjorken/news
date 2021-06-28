@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import ProgressiveImage from 'react-progressive-image';
 import '../about.css';
+import { useState, useEffect } from 'react';
 
 /*
 <div class="square">
@@ -18,8 +19,30 @@ import '../about.css';
 </div>
 </div>
 */
-const transition = { duration: 0.6, ease: [0.43, 0.13, 0.23, 0.96] };
-const About = ({ imageDetails, image }) => (
+
+const About = ({ imageDetails, image }) => {
+  const transition = { duration: 0.6, ease: [0.43, 0.13, 0.23, 0.96] };
+function useWindowSize() {
+  const [windowSize, setWindowSize] = useState();
+  useEffect(() => {
+    function handleResize() {
+      if (imageDetails.width >= 900) {
+        console.log('under 900')
+        setWindowSize(true);
+        imageDetails.width = 0
+        let imageSize = document.querySelector('.thumbnail')
+        imageSize.width = 0
+        imageSize.element.style = 0
+      }
+    }
+    window.addEventListener('resize', handleResize);
+    handleResize();
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+  return windowSize;
+}
+useWindowSize();
+return(
   <>
     <main>
       <div className="about-container">
@@ -29,7 +52,7 @@ const About = ({ imageDetails, image }) => (
               className="thumbnail"
               ref={image}
               style={{
-                width: imageDetails.width,
+                
                 height: imageDetails.height,
               }}
             >
@@ -64,6 +87,7 @@ const About = ({ imageDetails, image }) => (
       </div>
     </main>
   </>
-);
+  )
+};
 
 export default About;

@@ -111,6 +111,8 @@ const Model = ({ imageDetails }) => {
                   height: imageDetails.height,
                 }}
                 animate={{
+                  textalign : 'center',
+                  textAlign : 'center',
                   y: 0,
                   width: '100%',
                   height: window.innerWidth > 1440 ? 800 : 400,

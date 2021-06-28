@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import TopStory from './TopStory';
-
+import { AnimatePresence, motion } from 'framer-motion';
 import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
@@ -8,7 +8,7 @@ import Link from '@material-ui/core/Link';
 import { NavLink } from 'react-router-dom';
 import Aos from 'aos';
 import 'aos/dist/aos.css';
-import BackArrow from './images/backarrow.svg'
+import BackArrow from './images/backarrow.svg';
 
 const useStyles = makeStyles((theme) => ({
   card: {
@@ -31,52 +31,76 @@ function TopStories({ loading, topStories, getTopArticles }) {
     Aos.init({ duration: 2000 });
   }, []);
 
+  const pageVariants = {
+    initial: {
+      opacity: 0,
+    },
+    in: {
+      opacity: 1,
+    },
+    out: {
+      opacity: 0,
+    },
+  };
+
+  const pageTransition = {
+    type: 'tween',
+    ease: 'anticipate',
+    duration: 1,
+  };
+
   return (
     <>
       <>
-        <div className="container-topstories">
-        <NavLink to="/" className='goback'>
-          <Link component="button" variant="body2">
-              <img src={BackArrow} className='backarrow'/>
-          </Link>
-        </NavLink>
-        <div className='topstory-btn-main'>
-          <button
-            className="draw"
-            onClick={() => {
-              getTopArticles('world');
-            }}
-          >
-            World News
-          </button>
-          <button
-            onClick={() => {
-              getTopArticles('technology');
-            }}
-            className="draw"
-          >
-            Technology
-          </button>
-          <button
-            onClick={() => {
-              getTopArticles('us');
-            }}
-            className="draw"
-          >
-            US News
-          </button>
-        </div>
-        </div>
+        <motion.div
+          initial="initial"
+          animate="in"
+          exit="out"
+          variants={pageVariants}
+          transition={pageTransition}
+        >
+          <div className="container-topstories">
+            <NavLink to="/" className="goback">
+              <Link component="button" variant="body2">
+                <img src={BackArrow} className="backarrow" />
+              </Link>
+            </NavLink>
+            <div className="topstory-btn-main">
+              <button
+                className="draw"
+                onClick={() => {
+                  getTopArticles('world');
+                }}
+              >
+                World News
+              </button>
+              <button
+                onClick={() => {
+                  getTopArticles('technology');
+                }}
+                className="draw"
+              >
+                Technology
+              </button>
+              <button
+                onClick={() => {
+                  getTopArticles('us');
+                }}
+                className="draw"
+              >
+                US News
+              </button>
+            </div>
+          </div>
 
-        <div className="d">
-         
+          <div className="d">
             {topStories.map((topstory) => (
               <div className="main" key={topstory.url} data-aos="fade-up">
                 <TopStory topstory={topstory} />
               </div>
             ))}
-          
-        </div>
+          </div>
+        </motion.div>
       </>
     </>
   );

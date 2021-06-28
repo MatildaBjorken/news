@@ -19,7 +19,8 @@ import Ticker from 'react-ticker';
 import About from './components/about';
 import { AnimatePresence } from 'framer-motion';
 import Model from './components/model';
-import Square from './components/images/square.svg'
+import Square from './components/images/square.svg';
+import { motion, useViewportScroll, useTransform } from 'framer-motion';
 
 const App = () => {
   const [loading, setLoading] = useState(false);
@@ -96,6 +97,8 @@ const App = () => {
     width: 424,
     height: 550,
   };
+
+ 
   return (
     <div>
       <div>
@@ -119,132 +122,135 @@ const App = () => {
               </AnimatePresence>
             )}
           />
-
-          <Switch>
-            <Route
-              exact
-              path="/"
-              render={() => (
-                <>
-                <div className='coinatiner-main'>
-                  <div className="container">
-                    <img className="redLine" src={ReadLine} />
-                    <div className="wrapper">
-                      <div className="s">
-                        <div></div>
-                        <Ticker className="ticker-main">
-                          {({ index }) => (
+          <AnimatePresence>
+            <Switch>
+              <Route
+                exact
+                path="/"
+                render={() => (
+                  <>
+                    <div className="coinatiner-main">
+                      <div className="container">
+                        <img className="redLine" src={ReadLine} />
+                        <div className="wrapper">
+                          <div className="s">
+                            <div></div>
+                            <Ticker className="ticker-main">
+                              {({ index }) => (
+                                <>
+                                  <h1 className="ticker">
+                                    Trending top stories!{' '}
+                                  </h1>
+                                </>
+                              )}
+                            </Ticker>
+                            <p className="topStories">
+                              {renderWelcomeMsg()}...
+                              <br></br>
+                              Take a break and read the most popular stories
+                              right now. These are the trending stories in the
+                              world, in tech and in the us!
+                            </p>
+                            <NavLink to="/topstories">
+                              <Link
+                                component="button"
+                                className="btn-topstories "
+                                class="submit"
+                              >
+                                Go to top stories
+                              </Link>
+                            </NavLink>
+                            <br></br>
                             <>
-                              <h1 className="ticker">Trending top stories! </h1>
+                              {loading ? (
+                                'Loading...'
+                              ) : (
+                                <img
+                                  className="img-left"
+                                  src={
+                                    articles?.multimedia?.[0]?.url
+                                      ? `https://nytimes.com/${articles.multimedia[0].url}`
+                                      : landingImg2
+                                  }
+                                  alt="news-img"
+                                />
+                              )}
                             </>
-                          )}
-                        </Ticker>
-                        <p className="topStories">
-                          {renderWelcomeMsg()}...
-                          <br></br>
-                          Take a break and read the most popular stories right
-                          now. These are the trending stories in the world, in
-                          tech and in the us!
-                        </p>
-                        <NavLink to="/topstories">
-                          <Link
-                            component="button"
-                            className="btn-topstories "
-                            class="submit"
-                          >
-                            Go to top stories
-                          </Link>
-                        </NavLink>
-                        <br></br>
-                        <>
-                          {loading ? (
-                            'Loading...'
-                          ) : (
-                            <img
-                              className="img-left"
-                              src={
-                                articles?.multimedia?.[0]?.url
-                                  ? `https://nytimes.com/${articles.multimedia[0].url}`
-                                  : landingImg2
-                              }
-                              alt="news-img"
-                            />
-                          )}
-                        </>
-                        <img className="readme-img" src={ReadMe} />
-                      </div>
-                      <div className='right'>
-                        <>
-                          {loading ? (
-                            'Loading...'
-                          ) : (
-                            <img
-                              className="img-right"
-                              src={
-                                articles?.multimedia?.[0]?.url
-                                  ? `https://nytimes.com/${articles.multimedia[0].url}`
-                                  : landingImg
-                              }
-                              alt="news-img"
-                            />
-                          )}
-                        </>
-                        <Search searchArticles={searchArticles} />
+                            <img className="readme-img" src={ReadMe} />
+                          </div>
+                          <div className="right">
+                            <>
+                              {loading ? (
+                                'Loading...'
+                              ) : (
+                                <img
+                                  className="img-right"
+                                  src={
+                                    articles?.multimedia?.[0]?.url
+                                      ? `https://nytimes.com/${articles.multimedia[0].url}`
+                                      : landingImg
+                                  }
+                                  alt="news-img"
+                                />
+                              )}
+                            </>
+                            <Search searchArticles={searchArticles} />
 
-                        <p className="filter-text">
-                          What are you looking for?<br></br>
-                          Use filters to narrow the scope of your search. You
-                          can specify the fields and the values that your query
-                          will be filtered on.
-                        </p>
+                            <p className="filter-text">
+                              What are you looking for?<br></br>
+                              Use filters to narrow the scope of your search.
+                              You can specify the fields and the values that
+                              your query will be filtered on.
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="header">
+                        <div className="read">
+                          Read
+                          <img src={arrow} className="arrow" />
+                        </div>
+
+                        <h2 className="time">
+                          {' '}
+                          {timer.toLocaleTimeString().slice(0, 2)} AM
+                        </h2>
                       </div>
                     </div>
-                  </div>
-                  <div className="header">
-                    <div className="read">
-                      Read
-                      <img src={arrow} className="arrow" />
-                    </div>
+                    <Articles
+                      className="test"
+                      loading={loading}
+                      articles={articles}
+                    />
+                  </>
+                )}
+              />
 
-                    <h2 className="time">
-                      {' '}
-                      {timer.toLocaleTimeString().slice(0, 2)} AM
-                    </h2>
-                  </div>
-                  </div>
-                  <Articles
-                    className="test"
-                    loading={loading}
-                    articles={articles}
-                  />
-                </>
-              )}
-            />
-           
-
-            <Route
-              exact
-              path="/topstories"
-              render={() => (
-                <>
-                  <TopStories
-                    loading={loading}
-                    topStories={topStories}
-                    getTopArticles={getTopArticles}
-                  />
-                </>
-              )}
-            />
-          </Switch>
-        </Router>
+              <Route
+                exact
+                path="/topstories"
+                render={() => (
+                  <>
+                    <TopStories
+                      loading={loading}
+                      topStories={topStories}
+                      getTopArticles={getTopArticles}
+                    />
+                  </>
+                )}
+              />
+            </Switch>
+            </AnimatePresence>
+          </Router>
+       
         <div className="footer">
           <div className="read">
             <img src={GreatDay} className="greatday" />
           </div>
 
           <div className="square-footer">
-            <img src={Square}/>
-             </div>
+            <img src={Square} />
+          </div>
         </div>
       </div>
     </div>
