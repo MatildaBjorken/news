@@ -132,7 +132,7 @@ const App = () => {
             <Switch>
               <Route
                 exact
-                path="/"
+                path="/news"
                 render={() => (
                   <>
                     <StyleRoot>
