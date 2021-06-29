@@ -1,0 +1,38 @@
+{
+  "files": {
+    "main.css": "/news/static/css/main.937e0189.chunk.css",
+    "main.js": "/news/static/js/main.0aa54565.chunk.js",
+    "main.js.map": "/news/static/js/main.0aa54565.chunk.js.map",
+    "runtime-main.js": "/news/static/js/runtime-main.12b6f6c6.js",
+    "runtime-main.js.map": "/news/static/js/runtime-main.12b6f6c6.js.map",
+    "static/css/2.7fc9bc2b.chunk.css": "/news/static/css/2.7fc9bc2b.chunk.css",
+    "static/js/2.83cd9a22.chunk.js": "/news/static/js/2.83cd9a22.chunk.js",
+    "static/js/2.83cd9a22.chunk.js.map": "/news/static/js/2.83cd9a22.chunk.js.map",
+    "static/js/3.e3279a9d.chunk.js": "/news/static/js/3.e3279a9d.chunk.js",
+    "static/js/3.e3279a9d.chunk.js.map": "/news/static/js/3.e3279a9d.chunk.js.map",
+    "index.html": "/news/index.html",
+    "static/css/2.7fc9bc2b.chunk.css.map": "/news/static/css/2.7fc9bc2b.chunk.css.map",
+    "static/css/main.937e0189.chunk.css.map": "/news/static/css/main.937e0189.chunk.css.map",
+    "static/js/2.83cd9a22.chunk.js.LICENSE.txt": "/news/static/js/2.83cd9a22.chunk.js.LICENSE.txt",
+    "static/media/arrow.bbd7a7c7.svg": "/news/static/media/arrow.bbd7a7c7.svg",
+    "static/media/arrow2.f1fde664.svg": "/news/static/media/arrow2.f1fde664.svg",
+    "static/media/backarrow.645176ce.svg": "/news/static/media/backarrow.645176ce.svg",
+    "static/media/curly.2d2a56bc.svg": "/news/static/media/curly.2d2a56bc.svg",
+    "static/media/grafitti.da3c1936.jpg": "/news/static/media/grafitti.da3c1936.jpg",
+    "static/media/greatday.6eefaaa8.svg": "/news/static/media/greatday.6eefaaa8.svg",
+    "static/media/green.f67ef64c.jpg": "/news/static/media/green.f67ef64c.jpg",
+    "static/media/news.ca21d9c8.svg": "/news/static/media/news.ca21d9c8.svg",
+    "static/media/read-line.cb66b279.svg": "/news/static/media/read-line.cb66b279.svg",
+    "static/media/readme.c4ee6818.svg": "/news/static/media/readme.c4ee6818.svg",
+    "static/media/search.c75b4c95.svg": "/news/static/media/search.c75b4c95.svg",
+    "static/media/square.001823b6.svg": "/news/static/media/square.001823b6.svg",
+    "static/media/street.db62febf.jpg": "/news/static/media/street.db62febf.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.12b6f6c6.js",
+    "static/css/2.7fc9bc2b.chunk.css",
+    "static/js/2.83cd9a22.chunk.js",
+    "static/css/main.937e0189.chunk.css",
+    "static/js/main.0aa54565.chunk.js"
+  ]
+}
