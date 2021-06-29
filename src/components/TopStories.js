@@ -9,6 +9,8 @@ import { NavLink } from 'react-router-dom';
 import Aos from 'aos';
 import 'aos/dist/aos.css';
 import BackArrow from './images/backarrow.svg';
+import { flash } from 'react-animations';
+import Radium, { StyleRoot } from 'radium';
 
 const useStyles = makeStyles((theme) => ({
   card: {
@@ -49,6 +51,13 @@ function TopStories({ loading, topStories, getTopArticles }) {
     duration: 1,
   };
 
+  const styles = {
+    flash: {
+      animation: 'x 3s',
+      animationName: Radium.keyframes(flash, 'flash'),
+    },
+  };
+
   return (
     <>
       <>
@@ -59,47 +68,50 @@ function TopStories({ loading, topStories, getTopArticles }) {
           variants={pageVariants}
           transition={pageTransition}
         >
-          <div className="container-topstories">
-            <NavLink to="/" className="goback">
-              <Link component="button" variant="body2">
-                <img src={BackArrow} className="backarrow" />
-              </Link>
-            </NavLink>
-            <div className="topstory-btn-main">
-              <button
-                className="draw"
-                onClick={() => {
-                  getTopArticles('world');
-                }}
-              >
-                World News
-              </button>
-              <button
-                onClick={() => {
-                  getTopArticles('technology');
-                }}
-                className="draw"
-              >
-                Technology
-              </button>
-              <button
-                onClick={() => {
-                  getTopArticles('us');
-                }}
-                className="draw"
-              >
-                US News
-              </button>
-            </div>
-          </div>
-
-          <div className="d">
-            {topStories.map((topstory) => (
-              <div className="main" key={topstory.url} data-aos="fade-up">
-                <TopStory topstory={topstory} />
+          <StyleRoot>
+            <div className="container-topstories">
+              <NavLink to="/" className="goback">
+                <Link component="button" variant="body2">
+                  <img src={BackArrow} className="backarrow" />
+                </Link>
+              </NavLink>
+              <div className="topstory-btn-main" style={styles.flash}>
+                <button
+                  
+                  className="draw"
+                  onClick={() => {
+                    getTopArticles('world');
+                  }}
+                >
+                  World News
+                </button>
+                <button
+                  onClick={() => {
+                    getTopArticles('technology');
+                  }}
+                  className="draw"
+                >
+                  Technology
+                </button>
+                <button
+                  onClick={() => {
+                    getTopArticles('us');
+                  }}
+                  className="draw"
+                >
+                  US News
+                </button>
               </div>
-            ))}
-          </div>
+            </div>
+
+            <div className="d">
+              {topStories.map((topstory) => (
+                <div className="main" key={topstory.url} data-aos="fade-up">
+                  <TopStory topstory={topstory} />
+                </div>
+              ))}
+            </div>
+          </StyleRoot>
         </motion.div>
       </>
     </>

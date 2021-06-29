@@ -1,7 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { NavLink } from 'react-router-dom';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import { BrowserRouter } from 'react-router-dom';
 import axios from 'axios';
 import Articles from './components/Articles';
 import Search from './components/Search';
@@ -20,7 +19,8 @@ import About from './components/about';
 import { AnimatePresence } from 'framer-motion';
 import Model from './components/model';
 import Square from './components/images/square.svg';
-import { motion, useViewportScroll, useTransform } from 'framer-motion';
+import { flash } from 'react-animations';
+import Radium, { StyleRoot } from 'radium';
 
 const App = () => {
   const [loading, setLoading] = useState(false);
@@ -98,7 +98,13 @@ const App = () => {
     height: 550,
   };
 
- 
+  const styles = {
+    flash: {
+      animation: 'x 1s',
+      animationName: Radium.keyframes(flash, 'flash'),
+    },
+  };
+
   return (
     <div>
       <div>
@@ -129,94 +135,81 @@ const App = () => {
                 path="/"
                 render={() => (
                   <>
-                    <div className="coinatiner-main">
-                      <div className="container">
-                        <img className="redLine" src={ReadLine} />
-                        <div className="wrapper">
-                          <div className="s">
-                            <div></div>
-                            <Ticker className="ticker-main">
-                              {({ index }) => (
-                                <>
-                                  <h1 className="ticker">
-                                    Trending top stories!{' '}
-                                  </h1>
-                                </>
-                              )}
-                            </Ticker>
-                            <p className="topStories">
-                              {renderWelcomeMsg()}...
+                    <StyleRoot>
+                      <div className="coinatiner-main">
+                        <div className="container">
+                          <img className="redLine" src={ReadLine} style={styles.flash}/>
+                          <div className="wrapper">
+                            <div className="s">
+                              <div></div>
+                              <Ticker className="ticker-main">
+                                {({ index }) => (
+                                  <>
+                                    <h1 className="ticker">
+                                      Trending top stories!{' '}
+                                    </h1>
+                                  </>
+                                )}
+                              </Ticker>
+                              <p className="topStories">
+                                {renderWelcomeMsg()}...
+                                <br></br>
+                                Take a break and read the most popular stories
+                                right now. These are the trending stories in the
+                                world, in tech and in the us!
+                              </p>
+                              <NavLink to="/topstories">
+                                <Link
+                                  component="button"
+                                  className="btn-topstories "
+                                  class="submit"
+                                >
+                                  Go to top stories
+                                </Link>
+                              </NavLink>
                               <br></br>
-                              Take a break and read the most popular stories
-                              right now. These are the trending stories in the
-                              world, in tech and in the us!
-                            </p>
-                            <NavLink to="/topstories">
-                              <Link
-                                component="button"
-                                className="btn-topstories "
-                                class="submit"
-                              >
-                                Go to top stories
-                              </Link>
-                            </NavLink>
-                            <br></br>
-                            <>
-                              {loading ? (
-                                'Loading...'
-                              ) : (
-                                <img
-                                  className="img-left"
-                                  src={
-                                    articles?.multimedia?.[0]?.url
-                                      ? `https://nytimes.com/${articles.multimedia[0].url}`
-                                      : landingImg2
-                                  }
-                                  alt="news-img"
-                                />
-                              )}
-                            </>
-                            <img className="readme-img" src={ReadMe} />
-                          </div>
-                          <div className="right">
-                            <>
-                              {loading ? (
-                                'Loading...'
-                              ) : (
-                                <img
-                                  className="img-right"
-                                  src={
-                                    articles?.multimedia?.[0]?.url
-                                      ? `https://nytimes.com/${articles.multimedia[0].url}`
-                                      : landingImg
-                                  }
-                                  alt="news-img"
-                                />
-                              )}
-                            </>
-                            <Search searchArticles={searchArticles} />
+                              <img
+                                className="img-left"
+                                src={landingImg2}
+                                alt="news-img"
+                              />
+                              <img
+                                className="readme-img"
+                                src={ReadMe}
+                                
+                              />
+                            </div>
+                            <div className="right">
+                              <img
+                                
+                                className="img-right"
+                                src={landingImg}
+                                alt="news-img"
+                              />
+                              <Search searchArticles={searchArticles} />
 
-                            <p className="filter-text">
-                              What are you looking for?<br></br>
-                              Use filters to narrow the scope of your search.
-                              You can specify the fields and the values that
-                              your query will be filtered on.
-                            </p>
+                              <p className="filter-text" >
+                                What are you looking for?<br></br>
+                                Use filters to narrow the scope of your search.
+                                You can specify the fields and the values that
+                                your query will be filtered on.
+                              </p>
+                            </div>
                           </div>
                         </div>
-                      </div>
-                      <div className="header">
-                        <div className="read">
-                          Read
-                          <img src={arrow} className="arrow" />
-                        </div>
+                        <div className="header">
+                          <div className="read">
+                            Read
+                            <img src={arrow} className="arrow" />
+                          </div>
 
-                        <h2 className="time">
-                          {' '}
-                          {timer.toLocaleTimeString().slice(0, 2)} AM
-                        </h2>
+                          <h2 className="time" style={styles.flash}>
+                            {' '}
+                            {timer.toLocaleTimeString().slice(0, 2)} AM
+                          </h2>
+                        </div>
                       </div>
-                    </div>
+                    </StyleRoot>
                     <Articles
                       className="test"
                       loading={loading}
@@ -240,9 +233,9 @@ const App = () => {
                 )}
               />
             </Switch>
-            </AnimatePresence>
-          </Router>
-       
+          </AnimatePresence>
+        </Router>
+
         <div className="footer">
           <div className="read">
             <img src={GreatDay} className="greatday" />

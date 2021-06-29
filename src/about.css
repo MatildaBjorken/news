@@ -5,7 +5,7 @@
   margin-top: 35vh;
   transform: translateY(-50%);
   overflow: hidden;
-  animation: movinInBlock 1s ease-out;
+  animation: movinInBlock infinite ease-out;
 }
 
 .square div {
