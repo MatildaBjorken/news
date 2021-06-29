@@ -97,11 +97,9 @@ input {
 }
 
 .img-right {
-
   padding-left: 1em;
   padding-top: 1em;
   width: 100%;
-
 }
 
 .s {
@@ -353,13 +351,18 @@ nav {
   display: flex;
   justify-content: space-between;
   top: 0%;
+ 
   text-transform: uppercase;
   background-color: #ffffff;
   border-bottom: 1px solid black;
   display: flex;
   position: fixed;
   z-index: 10;
+}
 
+.inner-nav {
+  left: 10%;
+  width: 100%;
 }
 
 /*Styling logo*/
@@ -389,7 +392,6 @@ nav {
 
 /*Styling Links*/
 .nav-links {
-
   display: flex;
   list-style: none;
   left: 0;
@@ -398,7 +400,6 @@ nav {
 }
 
 .nav-links li a {
-
   font-size: 10px;
   text-decoration: none;
   margin: 0 0.7vw;
@@ -428,8 +429,6 @@ nav {
 .hamburger {
   display: none;
 }
-
-
 
 /*Stying for small screens*/
 @media screen and (max-width: 768px) {
@@ -540,7 +539,7 @@ nav {
 }
 
 .submit {
-  margin-left: .5em;
+  margin-left: 0.5em;
   font-family: 'Krona One', sans-serif;
   font-size: 0.7rem;
   color: black;
@@ -661,7 +660,6 @@ nav {
     height 0.25s ease-out 0.75s;
 }
 
-
 @media only screen and (min-width: 1500px) {
   .container {
     padding-top: 6.5em;
@@ -678,7 +676,6 @@ nav {
     font-size: 11px;
   }
 
-
   .time {
     margin: 0;
     font-size: 70px;
@@ -692,7 +689,6 @@ nav {
   .ticker {
     font-size: 1.2rem;
     height: 40px;
-
   }
 }
 

@@ -17,9 +17,11 @@ const Header = () => {
     hamburger.classList.toggle('toggle');
   }
   return (
+    <div className='inner-nav'>
     <nav className="nav">
+      
       <div class="logo">
-        <Link to="/">
+        <Link to="/news">
           {' '}
           <img src={NewsImg} alt="Logo Image" />
         </Link>
@@ -38,7 +40,9 @@ const Header = () => {
           <Link to="/about"> Aboutpage</Link>
         </li>
       </ul>
+      
     </nav>
+    </div>
   );
 };
 
