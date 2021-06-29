@@ -1,8 +1,6 @@
 import React from 'react';
 import NewsImg from './images/news.svg';
-
 import { BrowserRouter, Route, Link } from 'react-router-dom';
-import About from './about';
 
 const Header = () => {
   const hamburger = document.querySelector('.hamburger');
@@ -21,8 +19,10 @@ const Header = () => {
   return (
     <nav className="nav">
       <div class="logo">
-       
-        <Link to='/'> <img src={NewsImg} alt="Logo Image" /></Link>
+        <Link to="/">
+          {' '}
+          <img src={NewsImg} alt="Logo Image" />
+        </Link>
       </div>
       <div class="hamburger" onClick={menu}>
         <div class="line1"></div>
@@ -32,7 +32,7 @@ const Header = () => {
 
       <ul class="nav-links">
         <li>
-          <Link to='/topstories'>Top Stories</Link>
+          <Link to="/topstories">Top Stories</Link>
         </li>
         <li>
           <Link to="/about"> Aboutpage</Link>
@@ -43,5 +43,3 @@ const Header = () => {
 };
 
 export default Header;
-
-
